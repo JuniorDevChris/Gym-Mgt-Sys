@@ -5,8 +5,7 @@
 }
 
 <style>
-    html,
-    body {
+    html, body {
         height: 100%;
         margin: 0;
         display: flex;
@@ -86,19 +85,17 @@
         border-radius: 5px;
     }
 
-    @@keyframes expand {
-        from {
-            opacity: 0;
-            transform: scale(0.8);
-        }
-
-        to {
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
+    @* @keyframes expand {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        } *@
 </style>
-
 
 <div class="form-container">
     <button class="sign-in-button" id="signInBtn">Sign In</button>
@@ -125,12 +122,14 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
     <script>
-        document.getElementById("signInBtn").addEventListener("click", function () {
+        document.getElementById("signInBtn").addEventListener("click", function() {
             var button = this;
             var container = document.getElementById("loginContainer");
             button.style.display = "none";
             container.style.display = "flex";
             container.style.animation = "expand 0.5s ease-in-out forwards";
         });
+
+        
     </script>
 }

@@ -5,8 +5,9 @@ namespace Gym_Mgt_System.Models
     public class LoginView
     {
         [Required]
-        [Display(Name = "Username")]
-        public string Username { get; set; }
+        [EmailAddress]
+        [Display(Name = "User Name")]
+        public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

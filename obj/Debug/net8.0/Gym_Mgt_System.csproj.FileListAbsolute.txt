@@ -223,3 +223,4 @@
 /Users/chris/Desktop/Gym_Mgt_System/obj/Debug/net8.0/Gym_Mgt_System.pdb
 /Users/chris/Desktop/Gym_Mgt_System/obj/Debug/net8.0/Gym_Mgt_System.genruntimeconfig.cache
 /Users/chris/Desktop/Gym_Mgt_System/obj/Debug/net8.0/ref/Gym_Mgt_System.dll
+/Users/chris/Desktop/Gym_Mgt_System/obj/Debug/net8.0/Gym_Mgt_System.sourcelink.json

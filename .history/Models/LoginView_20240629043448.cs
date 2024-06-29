@@ -4,9 +4,7 @@ namespace Gym_Mgt_System.Models
 {
     public class LoginView
     {
-        [Required]
-        [Display(Name = "Username")]
-        public string Username { get; set; }
+        The name 'keyframes' does not exist in the current contextCS0103
 
         [Required]
         [DataType(DataType.Password)]
