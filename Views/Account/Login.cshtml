@@ -1,104 +1,11 @@
-@model Gym_Mgt_System.Models.LoginView
+@model Gym_Mgt_System.Models.Login
 
 @{
     ViewData["Title"] = "Portal Access";
 }
-
-<style>
-    html,
-    body {
-        height: 100%;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-family: Arial, sans-serif;
-    }
-
-    body {
-        background-image: url('/images/workout-bg.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
-
-    .login-container {
-        background-color: rgba(255, 255, 255, 0.946);
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        max-width: 400px;
-        width: 100%;
-        display: none;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .sign-in-button {
-        background-color: #007bff;
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin: 4px 2px;
-        transition-duration: 0.4s;
-        cursor: pointer;
-        border-radius: 5px;
-    }
-
-    .sign-in-button:hover {
-        background-color: white;
-        color: black;
-        border: 2px solid #007bff;
-    }
-
-    .form-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
-
-    .login-container h2 {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .login-container .form-group {
-        margin-bottom: 15px;
-        width: 100%;
-    }
-
-    .login-container .form-control {
-        background-color: rgba(255, 255, 255, 0.536);
-        border-radius: 5px;
-        padding: 10px;
-        font-size: 16px;
-    }
-
-    .login-container .btn-primary {
-        width: 100%;
-        padding: 10px;
-        font-size: 16px;
-        border-radius: 5px;
-    }
-
-    @@keyframes expand {
-        from {
-            opacity: 0;
-            transform: scale(0.8);
-        }
-
-        to {
-            opacity: 1;
-            transform: scale(1);
-        }
-    }
-</style>
-
+@section Styles {
+    <link rel="stylesheet" href="~/css/login.css" />
+}
 
 <div class="form-container">
     <button class="sign-in-button" id="signInBtn">Sign In</button>
@@ -106,9 +13,9 @@
     <div class="login-container" id="loginContainer">
         <form asp-action="Login">
             <div class="form-group">
-                <label asp-for="Username" class="control-label"></label>
-                <input asp-for="Username" class="form-control" autocomplete="off" />
-                <span asp-validation-for="Username" class="text-danger"></span>
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" autocomplete="off" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Password" class="control-label"></label>

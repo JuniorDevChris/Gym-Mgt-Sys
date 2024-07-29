@@ -1,0 +1,51 @@
+# Ignore Visual Studio temporary files, build results, and
+# JetBrains Rider specific files
+.vscode/
+bin/
+obj/
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider settings directory
+.idea/
+
+# Ignore the .history folder used by some VS Code extensions
+.history/
+
+# Ignore sensitive information
+appsettings.json
+
+# Ignore build directories
+/dist/
+/node_modules/
+/packages/
+/out/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore logs and debug files
+*.log
+
+# Ignore Python virtual environment folder
+venv/
+
+# Ignore coverage tool output
+coverage/
+
+# Ignore IDE specific folders
+/.vscode/
+/.vs/
+*.code-workspace
+
+# Ignore sensitive information files
+appsettings.Development.json
+appsettings.Staging.json
+appsettings.Production.json
+
+# Ignore publish directory
+publish/

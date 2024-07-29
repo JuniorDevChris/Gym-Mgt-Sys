@@ -2,11 +2,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Gym_Mgt_System.Models
 {
-    public class LoginView
+    public class Login
     {
         [Required]
         [Display(Name = "Username")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

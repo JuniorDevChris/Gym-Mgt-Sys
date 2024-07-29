@@ -8,10 +8,5 @@ namespace Gym_Mgt_System.Controllers
         {
             return View();
         }
-
-        public IActionResult Coaches()
-        {
-            return View();
-        }
     }
 }

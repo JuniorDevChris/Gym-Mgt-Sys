@@ -1,0 +1,110 @@
+@model Gym_Mgt_System.Models.Employee
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Employees";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <h4>Employee's Details</h4>
+            <form asp-action="CreateOrDeleteEmployee" method="post" id="employeeForm">
+                <input type="hidden" id="Id" asp-for="Id" />
+                <div class="mb-2">
+                    <label asp-for="Name" class="control-label">Name</label>
+                    <input asp-for="Name" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="mb-2">
+                    <label asp-for="PhoneNumber" class="control-label">Phone Number</label>
+                    <input asp-for="PhoneNumber" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                 <div class="mb-2">
+                    <label asp-for="Email" class="control-label">Email</label>
+                    <input asp-for="Email" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="mb-2">
+                    <label asp-for="UserName" class="control-label">User Name</label>
+                    <input asp-for="UserName" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+               
+                <div class="mb-2">
+                    <label asp-for="Password" class="control-label">Password</label>
+                    <input asp-for="Password" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button type="submit" name="action" value="Add" class="btn btn-primary" id="addButton">Add</button>
+                    <button type="button" name="action" value="Delete" class="btn btn-danger"
+                        id="deleteButton">Delete</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-9">
+            <h4>Employee List</h4>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone Number</th>
+                        <th>Email</th>
+                        <th>User Name</th>
+                        <th>Password</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var employee in ViewBag.Employees as IEnumerable<Gym_Mgt_System.Models.Employee>)
+                    {
+                        <tr onclick="populateForm('@employee.Id', '@employee.Name', '@employee.PhoneNumber', '@employee.Email', '@employee.UserName', '@employee.Password')">
+                            <td>@employee.Name</td>
+                            <td>@employee.PhoneNumber</td>
+                            <td>@employee.Email</td>
+                            <td>@employee.UserName</td>
+                            <td>@employee.Password</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        function populateForm(id, name, phone, email, username, password) {
+            document.getElementById("Id").value = id;
+            document.getElementById("Name").value = name;
+            document.getElementById("PhoneNumber").value = phone;
+            document.getElementById("Email").value = email;
+            document.getElementById("UserName").value = username;
+            document.getElementById("Password").value = password;
+
+            // Change button text to Save and Cancel
+            document.getElementById("addButton").textContent = "Save";
+            document.getElementById("addButton").value = "Save";
+            document.getElementById("deleteButton").textContent = "Cancel";
+            document.getElementById("deleteButton").value = "Cancel";
+            document.getElementById("deleteButton").type = "button";
+        }
+
+        document.getElementById("deleteButton").addEventListener("click", function () {
+            if (document.getElementById("deleteButton").value === "Cancel") {
+                document.getElementById("employeeForm").reset();
+                resetButtons();
+            }
+        });
+
+        function resetButtons() {
+            document.getElementById("addButton").textContent = "Add";
+            document.getElementById("addButton").value = "Add";
+            document.getElementById("deleteButton").textContent = "Delete";
+            document.getElementById("deleteButton").value = "Delete";
+            document.getElementById("deleteButton").type = "submit";
+        }
+    </script>
+}

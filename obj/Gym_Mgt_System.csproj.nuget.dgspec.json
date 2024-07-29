@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/chris/Desktop/Gym_Mgt_System/Gym_Mgt_System.csproj": {}
+    "/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/Gym_Mgt_System.csproj": {}
   },
   "projects": {
-    "/Users/chris/Desktop/Gym_Mgt_System/Gym_Mgt_System.csproj": {
+    "/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/Gym_Mgt_System.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/chris/Desktop/Gym_Mgt_System/Gym_Mgt_System.csproj",
+        "projectUniqueName": "/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/Gym_Mgt_System.csproj",
         "projectName": "Gym_Mgt_System",
-        "projectPath": "/Users/chris/Desktop/Gym_Mgt_System/Gym_Mgt_System.csproj",
+        "projectPath": "/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/Gym_Mgt_System.csproj",
         "packagesPath": "/Users/chris/.nuget/packages/",
-        "outputPath": "/Users/chris/Desktop/Gym_Mgt_System/obj/",
+        "outputPath": "/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/chris/.nuget/NuGet/NuGet.Config"
@@ -44,6 +44,24 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[8.0.2, )"

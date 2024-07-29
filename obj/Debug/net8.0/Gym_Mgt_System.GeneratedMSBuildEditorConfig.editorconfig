@@ -17,55 +17,67 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Gym_Mgt_System
 build_property.RootNamespace = Gym_Mgt_System
-build_property.ProjectDir = /Users/chris/Desktop/Gym_Mgt_System/
+build_property.ProjectDir = /Users/chris/Desktop/Personal Projects/Gym_Mgt_System/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/chris/Desktop/Gym_Mgt_System
+build_property.MSBuildProjectDirectory = /Users/chris/Desktop/Personal Projects/Gym_Mgt_System
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/chris/Desktop/Gym_Mgt_System/Views/Account/Login.cshtml]
+[/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/chris/Desktop/Gym_Mgt_System/Views/Admin/AdminDashboard.cshtml]
+[/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/Views/Admin/AdminDashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQWRtaW5EYXNoYm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/chris/Desktop/Gym_Mgt_System/Views/Admin/Coaches.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vQ29hY2hlcy5jc2h0bWw=
+[/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/Views/Admin/Employees.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vRW1wbG95ZWVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/chris/Desktop/Gym_Mgt_System/Views/Home/Index.cshtml]
+[/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/Views/Admin/MembershipPlan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vTWVtYmVyc2hpcFBsYW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/Views/Admin/Trainers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vVHJhaW5lcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/Views/Employee/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRW1wbG95ZWUvSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/chris/Desktop/Gym_Mgt_System/Views/Home/Privacy.cshtml]
+[/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/chris/Desktop/Gym_Mgt_System/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+[/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/Views/Members/Members.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTWVtYmVycy9NZW1iZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/chris/Desktop/Gym_Mgt_System/Views/Shared/_AdminLayout.cshtml]
+[/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/Views/Shared/_AdminLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19BZG1pbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/chris/Desktop/Gym_Mgt_System/Views/Shared/_ValidationScriptsPartial.cshtml]
+[/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/chris/Desktop/Gym_Mgt_System/Views/_ViewImports.cshtml]
+[/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/chris/Desktop/Gym_Mgt_System/Views/_ViewStart.cshtml]
+[/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/chris/Desktop/Gym_Mgt_System/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-mqf2u2duqr
