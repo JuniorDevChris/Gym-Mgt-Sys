@@ -4,6 +4,7 @@ using Gym_Mgt_System.Models;
 using Microsoft.AspNetCore.Identity;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Gym_Mgt_System.Controllers
 {
@@ -19,9 +20,21 @@ namespace Gym_Mgt_System.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login()
+        public async Task<IActionResult> Login()
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                var currentUser = await _userManager.GetUserAsync(User);
+                if (await _userManager.IsInRoleAsync(currentUser, "Admin"))
+                {
+                    return RedirectToAction("AdminDashboard", "Admin");
+                }
+                else
+                {
+                    return RedirectToAction("EmployeeDashboard", "Employee");
+                }
+            }
+            return View("~/Views/Accounts/Login.cshtml");
         }
 
         [HttpPost]
@@ -42,6 +55,7 @@ namespace Gym_Mgt_System.Controllers
                     if (result.Succeeded)
                     {
                         await _userManager.ResetAccessFailedCountAsync(user);
+                        
                         // Redirect to dashboard based on username
                         if (model.UserName.Equals("admin", StringComparison.OrdinalIgnoreCase))
                         {
@@ -49,7 +63,7 @@ namespace Gym_Mgt_System.Controllers
                         }
                         else
                         {
-                            return RedirectToAction("EmployeeDashboard", "Employee");
+                            return RedirectToAction("EmployeeDashboard", "Employees");
                         }
                     }
                     else
@@ -67,10 +81,25 @@ namespace Gym_Mgt_System.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    return View("~/Views/Accounts/Login.cshtml");
+                    // ModelState.AddModelError("", "Invalid login attempt.");
                 }
             }
 
+            return View();
+        }
+       
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Login", "Account");
+        }
+
+        [AllowAnonymous]
+        public IActionResult AccessDenied()
+        {
             return View();
         }
     }

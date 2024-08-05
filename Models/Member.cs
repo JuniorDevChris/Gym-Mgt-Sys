@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Gym_Mgt_System.Models
@@ -10,12 +10,18 @@ namespace Gym_Mgt_System.Models
         public string Gender { get; set; }
         public DateTime DateOfBirth { get; set; }
         public DateTime JoiningDate { get; set; }
-        public string MembershipPlan { get; set; } // foreign key to a MembershipPlan entity
-        public string Trainer { get; set; } // foreign key to a Trainer entity
+
+        [Required]
+        public int MembershipPlanId { get; set; } // Foreign key to MembershipPlan entity
+        public MembershipPlan MembershipPlan { get; set; } // Navigation property
+
+        public int? TrainerId { get; set; } // Nullable foreign key to Trainer entity
+        public Trainer Trainer { get; set; } // Navigation property
+
+        [Required]
+        [Phone]
         public string PhoneNumber { get; set; }
+        
         public string Status { get; set; } 
     }
 }
-
-
-

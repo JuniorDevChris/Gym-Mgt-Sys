@@ -271,6 +271,9 @@
 /Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Azure.Core.dll
 /Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Azure.Identity.dll
 /Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Humanizer.dll
+/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Microsoft.AspNetCore.Cryptography.Internal.dll
+/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 /Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Microsoft.AspNetCore.Razor.Language.dll
 /Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Microsoft.Bcl.AsyncInterfaces.dll
 /Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Microsoft.Build.dll
@@ -294,6 +297,9 @@
 /Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Relational.dll
 /Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.SqlServer.dll
 /Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Microsoft.Extensions.DependencyModel.dll
+/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Microsoft.Extensions.Identity.Core.dll
+/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Microsoft.Extensions.Identity.Stores.dll
+/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
 /Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Microsoft.Identity.Client.dll
 /Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Microsoft.Identity.Client.Extensions.Msal.dll
 /Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
@@ -337,6 +343,7 @@
 /Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/System.Runtime.Caching.dll
 /Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/System.Security.Cryptography.ProtectedData.dll
 /Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/System.Security.Permissions.dll
+/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/System.Text.Json.dll
 /Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/System.Windows.Extensions.dll
 /Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/af/Humanizer.resources.dll
 /Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/ar/Humanizer.resources.dll
@@ -502,10 +509,3 @@
 /Users/chris/Desktop/Personal Projects/Gym_Mgt_System/obj/Debug/net8.0/Gym_Mgt_System.pdb
 /Users/chris/Desktop/Personal Projects/Gym_Mgt_System/obj/Debug/net8.0/Gym_Mgt_System.genruntimeconfig.cache
 /Users/chris/Desktop/Personal Projects/Gym_Mgt_System/obj/Debug/net8.0/ref/Gym_Mgt_System.dll
-/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Microsoft.AspNetCore.Cryptography.Internal.dll
-/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
-/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
-/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Microsoft.Extensions.Identity.Core.dll
-/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Microsoft.Extensions.Identity.Stores.dll
-/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
-/Users/chris/Desktop/Personal Projects/Gym_Mgt_System/bin/Debug/net8.0/System.Text.Json.dll

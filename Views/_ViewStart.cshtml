@@ -1,3 +1,24 @@
-﻿@{
-    Layout = "_Layout";
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    if (!SignInManager.IsSignedIn(User))
+    {
+        Layout = "~/Views/Shared/_Layout.cshtml"; // Default layout for unauthenticated users
+    }
+    else
+    {
+        var currentUser = UserManager.GetUserAsync(User).Result;
+        var roles = UserManager.GetRolesAsync(currentUser).Result;
+
+        if (roles.Contains("Admin"))
+        {
+            Layout = "~/Views/Shared/_AdminLayout.cshtml";
+        }
+        else if (roles.Contains("Employee"))
+        {
+            Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+        }
+    }
 }

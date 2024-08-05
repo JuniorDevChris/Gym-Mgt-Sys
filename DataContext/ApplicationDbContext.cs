@@ -11,7 +11,6 @@ namespace Gym_Mgt_System.Data
         {
         }
 
-        public DbSet<Employee> Employees { get; set; }
         public DbSet<Member> Members { get; set; }
         public DbSet<Trainer> Trainers { get; set; }
         public DbSet<MembershipPlan> MembershipPlans { get; set; }
@@ -20,17 +19,18 @@ namespace Gym_Mgt_System.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Configure MembershipPlan relationships
+            // Configure Member to MembershipPlan relationship
             modelBuilder.Entity<Member>()
-                .HasOne<MembershipPlan>()
-                .WithMany()
-                .HasForeignKey(m => m.Id);
+                .HasOne(m => m.MembershipPlan)
+                .WithMany(mp => mp.Members)
+                .HasForeignKey(m => m.MembershipPlanId);
 
-            // Configure Trainer relationships
+            // Configure Member to Trainer relationship
             modelBuilder.Entity<Member>()
-                .HasOne<Trainer>()
+                .HasOne(m => m.Trainer)
                 .WithMany(t => t.Members)
-                .HasForeignKey(m => m.Id);
+                .HasForeignKey(m => m.TrainerId)
+                .OnDelete(DeleteBehavior.SetNull);
 
             // Additional configurations
             modelBuilder.Entity<MembershipPlan>()

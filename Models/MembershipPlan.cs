@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Gym_Mgt_System.Models
@@ -15,5 +16,7 @@ namespace Gym_Mgt_System.Models
 
         [Required]
         public string PlanType { get; set; } // Subscription or PayAsYouGo
+
+        public ICollection<Member> Members { get; set; }
     }
 }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Gym_Mgt_System.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240729085121_RemovePasswordFromApplicationUser")]
-    partial class RemovePasswordFromApplicationUser
+    [Migration("20240803025539_UpdateDbContext")]
+    partial class UpdateDbContext
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,11 +44,19 @@ namespace Gym_Mgt_System.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -74,7 +82,6 @@ namespace Gym_Mgt_System.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
@@ -91,56 +98,13 @@ namespace Gym_Mgt_System.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("Gym_Mgt_System.Models.Employee", b =>
+            modelBuilder.Entity("Gym_Mgt_System.Models.Member", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("FailedLoginAttempts")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsLockedOut")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Employees");
-                });
-
-            modelBuilder.Entity("Gym_Mgt_System.Models.Member", b =>
-                {
-                    b.Property<int>("Id")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
@@ -152,9 +116,8 @@ namespace Gym_Mgt_System.Migrations
                     b.Property<DateTime>("JoiningDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("MembershipPlan")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("MembershipPlanId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -168,11 +131,14 @@ namespace Gym_Mgt_System.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Trainer")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("TrainerId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("MembershipPlanId");
+
+                    b.HasIndex("TrainerId");
 
                     b.ToTable("Members");
                 });
@@ -361,17 +327,20 @@ namespace Gym_Mgt_System.Migrations
 
             modelBuilder.Entity("Gym_Mgt_System.Models.Member", b =>
                 {
-                    b.HasOne("Gym_Mgt_System.Models.MembershipPlan", null)
-                        .WithMany()
-                        .HasForeignKey("Id")
+                    b.HasOne("Gym_Mgt_System.Models.MembershipPlan", "MembershipPlan")
+                        .WithMany("Members")
+                        .HasForeignKey("MembershipPlanId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Gym_Mgt_System.Models.Trainer", null)
+                    b.HasOne("Gym_Mgt_System.Models.Trainer", "Trainer")
                         .WithMany("Members")
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TrainerId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("MembershipPlan");
+
+                    b.Navigation("Trainer");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -423,6 +392,11 @@ namespace Gym_Mgt_System.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Gym_Mgt_System.Models.MembershipPlan", b =>
+                {
+                    b.Navigation("Members");
                 });
 
             modelBuilder.Entity("Gym_Mgt_System.Models.Trainer", b =>
