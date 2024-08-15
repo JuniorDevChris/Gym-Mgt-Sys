@@ -7,6 +7,8 @@ namespace Gym_Mgt_System.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        internal readonly object TrainerViewModel;
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }

@@ -18,6 +18,6 @@ namespace Gym_Mgt_System.Models
         [EmailAddress]
         public string Email { get; set; }
 
-        public ICollection<Member> Members { get; set; }
+        public ICollection<Member>? Members { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-@model Gym_Mgt_System.Models.Trainer
+@model Gym_Mgt_System.ViewModels.TrainerViewModel
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -8,33 +8,38 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3">
-            <h4>Trainer's Details</h4>
-            <form asp-action="CreateOrDeleteTrainer" method="post" id="trainerForm">
+            <h4>Employee's Details</h4>
+            <form asp-controller="Trainer" asp-action="Create" method="post" id="employeeForm">
+                <div asp-validation-summary="All" class="text-danger"></div>
                 <input type="hidden" id="Id" asp-for="Id" />
+                <input type="hidden" id="isNewTrainer" name="isNewTrainer"
+                    value="@((Model.Id == null) ? "true" : "false")" />
+
                 <div class="mb-2">
-                    <label asp-for="Name" class="control-label">Trainer's Name</label>
-                    <input asp-for="Name" class="form-control" autocomplete="off" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
+                    <label asp-for="Name" class="control-label">Name</label>
+                    <input asp-for="Name" class="form-control" id="Name" autocomplete="off" />
                 </div>
                 <div class="mb-2">
-                    <label asp-for="PhoneNumber" class="control-label">Trainer's Phone Number</label>
-                    <input asp-for="PhoneNumber" class="form-control" autocomplete="off" />
-                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    <label asp-for="PhoneNumber" class="control-label">Phone Number</label>
+                    <input asp-for="PhoneNumber" class="form-control" id="PhoneNumber" autocomplete="off" />
                 </div>
                 <div class="mb-2">
-                    <label asp-for="Email" class="control-label">Trainer's Email</label>
-                    <input asp-for="Email" class="form-control" autocomplete="off" />
-                    <span asp-validation-for="Email" class="text-danger"></span>
+                    <label asp-for="Email" class="control-label">Email</label>
+                    <input asp-for="Email" class="form-control" id="Email" autocomplete="off" />
                 </div>
+                
                 <div class="d-flex justify-content-between">
-                    <button type="submit" name="action" value="Add" class="btn btn-primary" id="addButton">Add</button>
-                    <button type="button" name="action" value="Delete" class="btn btn-danger"
-                        id="deleteButton">Delete</button>
+                    <button type="submit" name="action" value="Save" class="btn btn-primary"
+                        id="addButton">Add</button>
+                    <button type="button" class="btn btn-secondary" id="cancelButton"
+                        style="display:none;">Cancel</button>
+                    <button type="button" class="btn btn-danger" id="deleteButton" style="display:none;"
+                    onclick="deleteTrainer()">Delete</button>
                 </div>
             </form>
         </div>
         <div class="col-md-9">
-            <h4>Trainers List</h4>
+            <h4>Employee List</h4>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -44,9 +49,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var trainer in ViewBag.Trainers as IEnumerable<Gym_Mgt_System.Models.Trainer>)
+                    @foreach (var trainer in Model.Trainers)
                     {
-                        <tr
+                        <tr style="cursor: pointer;"
                             onclick="populateForm('@trainer.Id', '@trainer.Name', '@trainer.PhoneNumber', '@trainer.Email')">
                             <td>@trainer.Name</td>
                             <td>@trainer.PhoneNumber</td>
@@ -62,33 +67,37 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
     <script>
-        function populateForm(id, name, phone, email) {
+        function populateForm(id, name, phone, email, username, gender) {
             document.getElementById("Id").value = id;
             document.getElementById("Name").value = name;
             document.getElementById("PhoneNumber").value = phone;
             document.getElementById("Email").value = email;
 
-            // Change button text to Save and Cancel
+            // Show Save, Cancel and Delete buttons, change Save button text
             document.getElementById("addButton").textContent = "Save";
-            document.getElementById("addButton").value = "Save";
-            document.getElementById("deleteButton").textContent = "Cancel";
-            document.getElementById("deleteButton").value = "Cancel";
-            document.getElementById("deleteButton").type = "button";
+            document.getElementById("cancelButton").style.display = "inline-block";
+            document.getElementById("deleteButton").style.display = "inline-block";
         }
 
-        document.getElementById("deleteButton").addEventListener("click", function () {
-            if (document.getElementById("deleteButton").value === "Cancel") {
-                document.getElementById("trainerForm").reset();
-                resetButtons();
-            }
+        document.getElementById("cancelButton").addEventListener("click", function () {
+            document.getElementById("employeeForm").reset();
+            resetButtons();
         });
 
         function resetButtons() {
             document.getElementById("addButton").textContent = "Add";
-            document.getElementById("addButton").value = "Add";
-            document.getElementById("deleteButton").textContent = "Delete";
-            document.getElementById("deleteButton").value = "Delete";
-            document.getElementById("deleteButton").type = "submit";
+            document.getElementById("cancelButton").style.display = "none";
+            document.getElementById("deleteButton").style.display = "none";
+        }
+
+        function deleteTrainer() {
+            const trainerId = document.getElementById("Id").value;
+            const fullUrl = `/Trainer/DeleteTrainer/${trainerId}`;
+            if (trainerId) {
+                window.location.href = fullUrl;
+            } else {
+                console.error("Employee ID is not available.");
+            }
         }
     </script>
 }

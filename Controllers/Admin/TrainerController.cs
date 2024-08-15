@@ -2,60 +2,64 @@ using Microsoft.AspNetCore.Mvc;
 using Gym_Mgt_System.Models;
 using System.Linq;
 using Gym_Mgt_System.Data;
+using Gym_Mgt_System.ViewModels;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
+using Microsoft.EntityFrameworkCore;
 
 namespace Gym_Mgt_System.Controllers
 {
     public class TrainerController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger _logger;
 
         public TrainerController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var trainers = new List<Trainer>
+            var trainers = await _context.Trainers.ToListAsync();
+
+            var viewModel = new TrainerViewModel
             {
-                new Trainer { Id = 1, Name = "John Doe", PhoneNumber = "123-456-7890", Email = "john@doe.com" },
-                new Trainer { Id = 2, Name = "Jane Smith", PhoneNumber = "234-567-8901", Email = "jane@doe.com" }
+                Trainers = trainers
             };
 
-            ViewBag.Trainers = trainers;
-            return View("~/Views/Admin/Trainers.cshtml");
+            return View("~/Views/Admin/Trainers.cshtml", viewModel);
         }
 
         [HttpPost]
-        public IActionResult CreateOrDeleteTrainer(Trainer trainer, string action)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(TrainerViewModel viewModel)
         {
-            if (action == "Add")
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                var existingTrainer = await _context.Trainers.FindAsync(viewModel.Id);
+                if (existingTrainer == null)
                 {
-                    if (trainer.Id == 0)
+                    Trainer trainer = new Trainer
                     {
-                        _context.Trainers.Add(trainer);
-                    }
-                    else
-                    {
-                        _context.Trainers.Update(trainer);
-                    }
-                    _context.SaveChanges();
-                    return RedirectToAction(nameof(Index));
+                        Name = viewModel.Name,
+                        PhoneNumber = viewModel.PhoneNumber,
+                        Email = viewModel.Email
+                    };
+                    await _context.Trainers.AddAsync(trainer);
                 }
-            }
-            else if (action == "Delete")
-            {
-                var existingTrainer = _context.Trainers.Find(trainer.Id);
-                if (existingTrainer != null)
+                else if (existingTrainer != null)
                 {
-                    _context.Trainers.Remove(existingTrainer);
-                    _context.SaveChanges();
-                    return RedirectToAction(nameof(Index));
+                    // Updating an existing trainer
+                    existingTrainer.Name = viewModel.Name;
+                    existingTrainer.PhoneNumber = viewModel.PhoneNumber;
+                    existingTrainer.Email = viewModel.Email;
+
+                    _context.Trainers.Update(existingTrainer);
                 }
+                
+                await _context.SaveChangesAsync();
             }
-            return View("~/Views/Admin/Trainer.cshtml", _context.Trainers.ToList());
+            return Redirect(nameof(Index));
         }
     }
 }
